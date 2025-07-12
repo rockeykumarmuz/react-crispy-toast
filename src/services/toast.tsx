@@ -30,35 +30,35 @@ export const setToastRef = (fn: typeof addCrispyToastFun) => {
 }
 
 export const toast = {
-	success: (message: string, options: Partial<ToastMessageType> = {}) => {
+	success: (message: string, options?: Partial<ToastMessageType>) => {
 		addCrispyToastFun?.({
 			...options,
+			id: crypto.randomUUID(),
 			message,
-			type: 'success',
 			icon: toastIconList[0]?.src,
 		})
 	},
-	error: (message: string, options: Partial<ToastMessageType> = {}) => {
+	error: (message: string, options?: Partial<ToastMessageType>) => {
 		addCrispyToastFun?.({
 			...options,
+			id: crypto.randomUUID(),
 			message,
-			type: 'error',
 			icon: toastIconList[1]?.src,
 		})
 	},
-	info: (message: string, options: Partial<ToastMessageType> = {}) => {
+	info: (message: string, options?: Partial<ToastMessageType>) => {
 		addCrispyToastFun?.({
 			...options,
+			id: crypto.randomUUID(),
 			message,
-			type: 'info',
 			icon: toastIconList[2]?.src,
 		})
 	},
-	alert: (message: string, options: Partial<ToastMessageType> = {}) => {
+	alert: (message: string, options?: Partial<ToastMessageType>) => {
 		addCrispyToastFun?.({
 			...options,
+			id: crypto.randomUUID(),
 			message,
-			type: 'alert',
 			icon: toastIconList[0]?.src,
 		})
 	},

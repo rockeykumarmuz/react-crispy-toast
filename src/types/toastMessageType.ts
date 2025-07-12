@@ -2,12 +2,11 @@ import type { ReactNode } from 'react'
 
 export type ToastPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'top-center' | 'bottom-center'
 
-export type ToastType = 'success' | 'error' | 'info' | 'alert' | 'default'
+export type ToastType = 'success' | 'error' | 'info' | 'alert'
 
 export type ToastMessageType = {
-	id?: string
+	id?: string | number
 	message: string | ReactNode
-	type?: ToastType
 	icon?: string | ReactNode
 	closeButton?: boolean
 	duration?: number

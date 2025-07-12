@@ -12,15 +12,15 @@ const Toast = ({ icon, id, message, closeButton, backgroundColor }: ToastMessage
 				<div className='toast-message'>
 					<p>{message}</p>
 				</div>
-				<div onClick={() => removeToast(id || '')}>
-					{closeButton && (
+				{closeButton && (
+					<div onClick={() => removeToast(id as string)}>
 						<img
 							className='close-button'
 							src='https://cdn-icons-png.flaticon.com/128/9684/9684650.png'
 							alt='toast-close-icon'
 						/>
-					)}
-				</div>
+					</div>
+				)}
 			</div>
 		</div>
 	)
