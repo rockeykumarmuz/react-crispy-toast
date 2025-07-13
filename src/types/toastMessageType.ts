@@ -13,7 +13,6 @@ export type ToastMessageType = {
 	backgroundColor?: string
 	textColor?: string
 	position?: ToastPosition
-	className?: string
 	style?: React.CSSProperties
 }
 
