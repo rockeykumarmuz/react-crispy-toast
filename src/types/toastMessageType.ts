@@ -21,6 +21,8 @@ export type ToastContextType = {
 	setCrispyToasts: React.Dispatch<React.SetStateAction<ToastMessageType[]>>
 	addToast: (toast: ToastMessageType) => void
 	removeToast: (id: string) => void
+	exitToast: boolean
+	setExitToast: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const toastIcons = {
