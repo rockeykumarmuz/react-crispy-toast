@@ -1,4 +1,4 @@
-.body {
+/* .body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -7,7 +7,7 @@
 }
 
 .toast-container {
-	position: relative;
+	position: absolute;
 	border-radius: 5px;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 	transition: all 0.3s ease-in-out;
@@ -15,6 +15,8 @@
 	top: 2rem;
 	right: 1rem;
 	animation: slide-in 0.3s ease;
+	margin-bottom: 1.4rem;
+	width: 100%;
 }
 
 .toast {
@@ -29,7 +31,7 @@
 
 .toast .toast-icon {
 	width: 24px;
-  height: 24px;
+	height: 24px;
 }
 
 .close-button {
@@ -42,13 +44,248 @@
 	cursor: pointer;
 }
 
-@keyframes slide-in {
+/* --------------------------------------------------------- */
+
+/* Reset & Base */
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	overflow: hidden;
+	font-family: Arial, sans-serif, Helvetica;
+}
+
+/* === Toast Wrapper Positioning === */
+.toast-wrapper {
+	position: fixed;
+	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	max-width: 400px;
+	width: 100%;
+	padding: 0 1rem;
+	pointer-events: none; /* allow clicks to pass through background */
+}
+
+/* === Individual Toast === */
+.toast-container {
+	background-color: #fff;
+	color: #000;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	padding: 5px 10px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	pointer-events: all; /* allow toast clicks */
+	position: relative;
+	min-width: 280px;
+	max-width: 100%;
+}
+
+.toast {
+	position: relative;
+	/* padding: 5px 5px; */
+	display: flex;
+	align-items: center;
+	border-radius: 5px;
+	gap: 1rem;
+}
+
+/* top left position */
+.toast-wrapper.top-left {
+	top: 1rem;
+	left: 1rem;
+	/* align-items: flex-start; */
+}
+
+/* top right position */
+.toast-wrapper.top-right {
+	top: 1rem;
+	right: 1rem;
+	/* align-items: flex-end; */
+}
+
+/* top center position */
+.toast-wrapper.top-center {
+	top: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+	align-items: center;
+}
+
+/* bottom left position */
+.toast-wrapper.bottom-left {
+	bottom: 1rem;
+	left: 1rem;
+	align-items: flex-start;
+}
+
+/* bottom right position */
+.toast-wrapper.bottom-right {
+	bottom: 1rem;
+	right: 1rem;
+	align-items: flex-end;
+}
+
+/* bottom center position */
+.toast-wrapper.bottom-center {
+	bottom: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+	align-items: center;
+	width: 100%;
+}
+
+.toast-message {
+	flex: 1;
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+/* toast icon width and height */
+.toast-icon {
+	width: 24px;
+	height: 24px;
+}
+
+/* close button styles here */
+.close-button {
+	position: absolute;
+	right: 2%;
+	top: 8%;
+	width: 15px;
+	font-weight: 500;
+	cursor: pointer;
+	opacity: 0.8;
+	transition: opacity 0.2s ease;
+}
+
+.close-button:hover {
+	opacity: 1;
+}
+
+/* Slide in and out animation for different toast styles */
+.toast-container.top-right.toast-enter,
+.toast-container.bottom-right.toast-enter {
+	animation: slide-in-right 0.4s ease forwards;
+}
+
+.toast-container.top-right.toast-exit,
+.toast-container.bottom-right.toast-exit {
+	animation: slide-out-right 0.4s ease forwards;
+}
+
+.toast-container.top-left.toast-enter,
+.toast-container.bottom-left.toast-enter {
+	animation: slide-in-left 0.4s ease forwards;
+}
+
+.toast-container.top-left.toast-exit,
+.toast-container.bottom-left.toast-exit {
+	animation: slide-out-left 0.4s ease forwards;
+}
+
+.toast-container.top-center.toast-enter {
+	animation: slide-in-top 0.4s ease forwards;
+}
+.toast-container.top-center.toast-exit {
+	animation: slide-out-top 0.4s ease forwards;
+}
+
+.toast-container.bottom-center.toast-enter {
+	animation: slide-in-bottom 0.4s ease forwards;
+}
+.toast-container.bottom-center.toast-exit {
+	animation: slide-out-bottom 0.4s ease forwards;
+}
+
+/* Animation for the slides effect for all the toast */
+@keyframes slide-in-right {
 	from {
+		transform: translateX(100%);
 		opacity: 0;
-		transform: translateY(-10px);
 	}
 	to {
+		transform: translateX(0);
 		opacity: 1;
+	}
+}
+
+@keyframes slide-out-right {
+	from {
+		transform: translateX(0);
+		opacity: 1;
+	}
+	to {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+}
+
+@keyframes slide-in-left {
+	from {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slide-out-left {
+	from {
+		transform: translateX(0);
+		opacity: 1;
+	}
+	to {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+}
+
+@keyframes slide-in-top {
+	from {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+	to {
 		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slide-out-top {
+	from {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	to {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+}
+
+@keyframes slide-in-bottom {
+	from {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slide-out-bottom {
+	from {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	to {
+		transform: translateY(100%);
+		opacity: 0;
 	}
 }
