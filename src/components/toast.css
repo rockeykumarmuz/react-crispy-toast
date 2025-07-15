@@ -169,12 +169,12 @@ body {
 /* Slide in and out animation for different toast styles */
 .toast-container.top-right.toast-enter,
 .toast-container.bottom-right.toast-enter {
-	animation: slide-in-right 0.4s ease forwards;
+	animation: slide-in-right 0.5s ease forwards;
 }
 
 .toast-container.top-right.toast-exit,
 .toast-container.bottom-right.toast-exit {
-	animation: slide-out-right 0.4s ease forwards;
+	animation: slide-out-right 0.5s ease forwards;
 }
 
 .toast-container.top-left.toast-enter,
@@ -204,22 +204,22 @@ body {
 /* Animation for the slides effect for all the toast */
 @keyframes slide-in-right {
 	from {
-		transform: translateX(100%);
+		transform: translateX(100%) scale(0);
 		opacity: 0;
 	}
 	to {
-		transform: translateX(0);
+		transform: translateX(0) scale(1);
 		opacity: 1;
 	}
 }
 
 @keyframes slide-out-right {
 	from {
-		transform: translateX(0);
+		transform: translateX(0) scale(0);
 		opacity: 1;
 	}
 	to {
-		transform: translateX(100%);
+		transform: translateX(100%) scale(1);
 		opacity: 0;
 	}
 }

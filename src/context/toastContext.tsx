@@ -27,11 +27,11 @@ const CrispyToastProvider = ({ children }: { children: ReactNode }) => {
 		const toastId = toast.id || crypto.randomUUID()
 		setCrispyToasts(prevToasts => [...prevToasts, { ...toast, toastId }])
 
-		// if (toast.duration != 0) {
-		// 	setTimeout(() => {
-		// 		removeToast(toast.id as number | string)
-		// 	}, toast.duration || 4000)
-		// }
+		if (toast.duration != 0) {
+			setTimeout(() => {
+				removeToast(toast.id as number | string)
+			}, toast.duration || 4000)
+		}
 	}, [])
 
 	// function to remove the toast from the UI
